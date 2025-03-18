@@ -1,10 +1,13 @@
+import ImageSlider from "@/components/slider";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       <header className="flex gap-12 my-12 mx-auto w-[90%] m-w-[75rem]">
-        <div className="w-[40rem] h-[25rem]"></div>
+        <div className="w-[40rem] h-[25rem]">
+          <ImageSlider />
+        </div>
         <div>
           <div className="text-2xl text-amber-100">
             <h1 className="text-2xl font-bold font-[Montserrat] tracking-widest uppercase bg-gradient-to-r from-[#f9572a] to-[#ffc905] bg-clip-text text-transparent">
