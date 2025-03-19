@@ -2,6 +2,7 @@ import Link from "next/link";
 import logoImg from "@/assets/logo.png";
 import Image from "next/image";
 import MainHeaderBackground from "./main-header-background";
+import NavLink from "../nav-link";
 
 const MainHeader = () => {
   return (
@@ -25,20 +26,10 @@ const MainHeader = () => {
         <nav>
           <ul className="list-none m-0 p-0 flex gap-6 text-[1.25rem]">
             <li>
-              <Link
-                href="/meals"
-                className="text-[#ddd6cb] font-bold px-2 py-1 rounded-md no-underline hover:bg-gradient-to-r from-[#ff8a05] to-[#f9b331] hover:bg-clip-text hover:text-transparent hover:shadow-[0_0_18px_rgba(248,190,42,0.8)]"
-              >
-                Browse Meals
-              </Link>
+              <NavLink href="/meals">Browse meals</NavLink>
             </li>
             <li>
-              <Link
-                href="/community"
-                className="text-[#ddd6cb] font-bold px-2 py-1 rounded-md no-underline hover:bg-gradient-to-r from-[#ff8a05] to-[#f9b331] hover:bg-clip-text hover:text-transparent hover:shadow-[0_0_18px_rgba(248,190,42,0.8)]"
-              >
-                Foodies Community
-              </Link>
+              <NavLink href="/community">Foodies Community</NavLink>
             </li>
           </ul>
         </nav>
