@@ -2,7 +2,11 @@ import { fetchMealBySlug } from "@/lib/meals";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-const MealDetails = async (params: Promise<{ slug: string }>) => {
+const MealDetails = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
   const { slug } = await params;
   const meal = await fetchMealBySlug(slug);
 
