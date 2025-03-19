@@ -1,8 +1,11 @@
 import MealsGrid from "@/components/meals/meals-grid";
+import { fetchMeals } from "@/lib/meals";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const Page = () => {
+const Page = async () => {
+  const meals = await fetchMeals();
+
   return (
     <>
       <header className="gap-12 my-12 mx-auto mb-20 w-[90%] max-w-[75rem] text-[#ddd6cb] text-xl">
@@ -32,7 +35,7 @@ const Page = () => {
             </p>
           }
         >
-          <MealsGrid meals={[]} />
+          <MealsGrid meals={meals} />
         </Suspense>
       </main>
     </>

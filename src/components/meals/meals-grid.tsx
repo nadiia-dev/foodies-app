@@ -1,13 +1,5 @@
+import { Meals } from "@/lib/definitions";
 import MealsItem from "./meals-item";
-
-interface Meals {
-  id: string;
-  title: string;
-  slug: string;
-  image: string;
-  summary: string;
-  creator: string;
-}
 
 const MealsGrid = ({ meals }: { meals: Meals[] }) => {
   return (
