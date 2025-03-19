@@ -1,4 +1,6 @@
 import ImagePicker from "@/components/meals/image-picker";
+import { shareMeal } from "@/lib/actions";
+// import { useActionState } from "react";
 
 const Page = () => {
   return (
@@ -13,7 +15,7 @@ const Page = () => {
         <p>Or any other meal you feel needs sharing!</p>
       </header>
       <main className="mx-auto my-12 max-w-[75rem] w-[90%] text-white">
-        <form className="max-w-[50rem]">
+        <form className="max-w-[50rem]" action={shareMeal}>
           <div className="flex gap-4">
             <p className="w-full">
               <label
@@ -91,9 +93,9 @@ const Page = () => {
               required
             ></textarea>
           </p>
-          <ImagePicker label="Image picker" name="Pick image" />
+          <ImagePicker label="Image picker" name="image" />
           <p className="text-right">
-            <button type="button">Submit</button>
+            <button>Submit</button>
           </p>
         </form>
       </main>

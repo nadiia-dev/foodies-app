@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 
 const ImagePicker = ({ label, name }: { label: string; name: string }) => {
-  const [pickedImage, setPickedImage] = useState(null);
+  const [pickedImage, setPickedImage] = useState<string>("");
 
   const imageInput = useRef<HTMLInputElement>(null);
   const handlePickClick = () => {
@@ -13,11 +13,16 @@ const ImagePicker = ({ label, name }: { label: string; name: string }) => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
-      setPickedImage(null);
+      setPickedImage("");
       return;
     }
 
     const fileReader = new FileReader();
+    fileReader.onload = () => {
+      if (fileReader.result !== null) {
+        setPickedImage(fileReader.result as string);
+      }
+    };
     fileReader.readAsDataURL(file);
   };
 
@@ -26,8 +31,10 @@ const ImagePicker = ({ label, name }: { label: string; name: string }) => {
       <label htmlFor={name}>{label}</label>
       <div className="flex items-start gap-6 mb-4">
         <div className="w-40 h-40 border-2 border-[#a4abb9] flex justify-center items-center text-center text-[#a4abb9] relative">
-          {!pickedImage && <p className="m-0 p-4">No image picked yet.</p>}
-          {pickedImage && (
+          {pickedImage === "" && (
+            <p className="m-0 p-4">No image picked yet.</p>
+          )}
+          {pickedImage !== "" && (
             <Image
               src={pickedImage}
               className="object-cover"

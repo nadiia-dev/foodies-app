@@ -17,6 +17,8 @@ const MealDetails = async ({ params }: MealDetailsProps) => {
 
   meal.instructions = meal.instructions.replace(/\n/g, "<br/>");
 
+  console.log(meal.image);
+
   return (
     <>
       {meal !== undefined && (
