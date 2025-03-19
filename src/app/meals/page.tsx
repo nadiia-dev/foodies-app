@@ -3,9 +3,12 @@ import { fetchMeals } from "@/lib/meals";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const Page = async () => {
+const Meals = async () => {
   const meals = await fetchMeals();
+  return <MealsGrid meals={meals} />;
+};
 
+const Page = async () => {
   return (
     <>
       <header className="gap-12 my-12 mx-auto mb-20 w-[90%] max-w-[75rem] text-[#ddd6cb] text-xl">
@@ -30,12 +33,12 @@ const Page = async () => {
       <main>
         <Suspense
           fallback={
-            <p className="text-center animate-[loading_1.2s_ease-in-out_infinite]">
+            <p className="text-center text-white animate-[loading_1.2s_ease-in-out_infinite]">
               Fetching meals...
             </p>
           }
         >
-          <MealsGrid meals={meals} />
+          <Meals />
         </Suspense>
       </main>
     </>
