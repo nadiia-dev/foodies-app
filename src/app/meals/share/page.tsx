@@ -1,6 +1,6 @@
 import ImagePicker from "@/components/meals/image-picker";
+import MealsFormSubmit from "@/components/meals/meals-form-submit";
 import { shareMeal } from "@/lib/actions";
-// import { useActionState } from "react";
 
 const Page = () => {
   return (
@@ -95,7 +95,7 @@ const Page = () => {
           </p>
           <ImagePicker label="Image picker" name="image" />
           <p className="text-right">
-            <button>Submit</button>
+            <MealsFormSubmit />
           </p>
         </form>
       </main>
