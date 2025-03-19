@@ -2,7 +2,7 @@ import Link from "next/link";
 import logoImg from "@/assets/logo.png";
 import Image from "next/image";
 import MainHeaderBackground from "./main-header-background";
-import NavLink from "../nav-link";
+import NavLink from "./nav-link";
 
 const MainHeader = () => {
   return (
