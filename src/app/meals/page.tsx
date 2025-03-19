@@ -3,6 +3,11 @@ import { fetchMeals } from "@/lib/meals";
 import Link from "next/link";
 import { Suspense } from "react";
 
+export const metadata = {
+  title: "All meals",
+  description: "Browse the delicious meals shared by our vibrant community.",
+};
+
 const Meals = async () => {
   const meals = await fetchMeals();
   return <MealsGrid meals={meals} />;

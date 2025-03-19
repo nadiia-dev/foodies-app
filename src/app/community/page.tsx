@@ -3,6 +3,11 @@ import communityIcon from "@/assets/icons/community.png";
 import eventsIcon from "@/assets/icons/events.png";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Community",
+  description: "Join our community and share your favorite recipes!",
+};
+
 const Page = () => {
   return (
     <>

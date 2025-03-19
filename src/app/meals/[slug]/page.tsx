@@ -2,6 +2,24 @@ import { fetchMealBySlug } from "@/lib/meals";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; title: string; summary: string }>;
+}) {
+  const { slug, title, summary } = await params;
+  const meal = fetchMealBySlug(slug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  return {
+    title: title,
+    description: summary,
+  };
+}
+
 const MealDetails = async ({
   params,
 }: {

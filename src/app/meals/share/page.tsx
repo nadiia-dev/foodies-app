@@ -2,6 +2,11 @@ import ImagePicker from "@/components/meals/image-picker";
 import MealsFormSubmit from "@/components/meals/meals-form-submit";
 import { shareMeal } from "@/lib/actions";
 
+export const metadata = {
+  title: "Share meal",
+  description: "Share your favourite meal",
+};
+
 const Page = () => {
   return (
     <>
