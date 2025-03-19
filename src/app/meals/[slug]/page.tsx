@@ -2,14 +2,9 @@ import { fetchMealBySlug } from "@/lib/meals";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-interface MealDetailsProps {
-  params: {
-    slug: string;
-  };
-}
-
-const MealDetails = async ({ params }: MealDetailsProps) => {
-  const meal = await fetchMealBySlug(params.slug);
+const MealDetails = async (params: Promise<{ slug: string }>) => {
+  const { slug } = await params;
+  const meal = await fetchMealBySlug(slug);
 
   if (!meal) {
     notFound();

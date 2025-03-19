@@ -1,6 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
+import { revalidatePath } from "next/cache";
 
 export async function shareMeal(formData: FormData) {
   const meal = {
@@ -12,5 +13,6 @@ export async function shareMeal(formData: FormData) {
     creator_email: formData.get("email") as string,
   };
   await saveMeal(meal);
+  revalidatePath("/meals");
   redirect("/meals");
 }
