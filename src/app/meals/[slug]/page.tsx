@@ -1,4 +1,5 @@
 import { fetchMealBySlug } from "@/lib/meals";
+import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -6,17 +7,17 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string; title: string; summary: string }>;
-}) {
-  const { slug, title, summary } = await params;
-  const meal = fetchMealBySlug(slug);
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const meal = await fetchMealBySlug(slug);
 
   if (!meal) {
     notFound();
   }
 
   return {
-    title: title,
-    description: summary,
+    title: meal.title,
+    description: meal.summary,
   };
 }
 
@@ -38,8 +39,8 @@ const MealDetails = async ({
     <>
       {meal !== undefined && (
         <>
-          <header className="flex py-8 px-4 gap-12 m-auto max-w-7xl">
-            <div className="relative w-[30rem] h-[20rem]">
+          <header className="flex flex-col md:flex-row py-8 px-4 gap-12 m-auto max-w-7xl">
+            <div className="relative md:w-[30rem] h-[20rem]">
               <Image
                 src={meal.image}
                 alt={meal.title}
